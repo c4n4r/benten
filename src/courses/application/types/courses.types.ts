@@ -15,3 +15,9 @@ export interface UpdateCourseCommand {
   title?: string;
   description?: string;
 }
+
+export interface CreateCardForCourseCommand {
+  title: string;
+  content: string;
+  courseId: Identifiant;
+}

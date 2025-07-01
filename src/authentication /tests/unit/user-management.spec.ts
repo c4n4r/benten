@@ -4,10 +4,10 @@ import {
   CreateUserCommand,
   CreateUserResponse,
   UpdateUserCommand,
-} from '../../application /types/user-management.types';
-import CreateUserUseCase from '../../application /usecase/create-user.usecase';
-import FindUserUseCase from '../../application /usecase/find-user.usecase';
-import UpdateUserUseCase from '../../application /usecase/update-user.usecase';
+} from '../../application/types/user-management.types';
+import CreateUserUseCase from '../../application/usecase/create-user.usecase';
+import FindUserUseCase from '../../application/usecase/find-user.usecase';
+import UpdateUserUseCase from '../../application/usecase/update-user.usecase';
 import { User } from '../../domain/user.entity';
 import AuthenticationTestingModule from '../module/authentication.tesing.module';
 

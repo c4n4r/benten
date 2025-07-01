@@ -3,7 +3,7 @@ import { Identifiant } from '../../../shared/domain/identifiant';
 import {
   CreateUserCommand,
   UpdateUserCommand,
-} from '../../application /types/user-management.types';
+} from '../../application/types/user-management.types';
 import { User } from '../user.entity';
 
 @Injectable()

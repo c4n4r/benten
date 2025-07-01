@@ -4,7 +4,7 @@ import { Identifiant } from '../../../shared/domain/identifiant';
 import {
   CreateUserCommand,
   UpdateUserCommand,
-} from '../../application /types/user-management.types';
+} from '../../application/types/user-management.types';
 import UserRepositoryInterface from '../../domain/repository/user.repository';
 import { User } from '../../domain/user.entity';
 @Injectable()
