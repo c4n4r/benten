@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Identifiant } from '../../../shared/domain/identifiant';
+import PasswordHasherService from '../../../shared/infrastructure/password/password-hasher.service';
 import {
   CreateUserCommand,
   CreateUserResponse,
@@ -24,6 +25,16 @@ describe('User management', () => {
       givenNowIs(new Date('2023-10-01T12:00:00Z'));
       const user = await whenUserWantToSubscribeToTheService(johnDoe);
       thenTheUserShouldBeCreated(user);
+    });
+    it("Should hash the user's password", async () => {
+      givenNowIs(new Date('2023-10-01T12:00:00Z'));
+      const spy = jest.spyOn(
+        testingModule.get(PasswordHasherService),
+        'hashPassword',
+      );
+      await whenUserWantToSubscribeToTheService(johnDoe);
+      expect(spy).toHaveBeenCalledWith(johnDoe.password);
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
   describe('User retrieval', () => {

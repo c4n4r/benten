@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import DateHelperInterface from '../../../shared/application/dates/date.helper';
 import { Identifiant } from '../../../shared/domain/identifiant';
+import PasswordHasherService from '../../../shared/infrastructure/password/password-hasher.service';
 import {
   CreateUserCommand,
   UpdateUserCommand,
@@ -10,16 +11,18 @@ import { User } from '../../domain/user.entity';
 @Injectable()
 export default class UserInMemoryRepository implements UserRepositoryInterface {
   constructor(
-    private readonly dateHelper: DateHelperInterface, // Assuming DateHelperInterface is injected for date handling
+    private readonly dateHelper: DateHelperInterface,
+    private readonly passwordHasher: PasswordHasherService, // Inject PasswordHasherService
   ) {}
 
   create(user: CreateUserCommand): Promise<User> {
+    const hashedPassword = this.passwordHasher.hashPassword(user.password);
     const newUser = User.create({
       id: this.generateId(),
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      password: user.password,
+      password: hashedPassword, // Use hashed password
       nickname: user.nickname,
       createdAt: this.dateHelper.now(),
     });

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import DateHelperInterface from '../../../shared/application/dates/date.helper';
 import DateHelper from '../../../shared/infrastructure/dates/date.helper';
+import PasswordHasherService from '../../../shared/infrastructure/password/password-hasher.service';
 import CreateUserUseCase from '../../application/usecase/create-user.usecase';
 import FindUserUseCase from '../../application/usecase/find-user.usecase';
 import UpdateUserUseCase from '../../application/usecase/update-user.usecase';
@@ -25,7 +26,8 @@ import { _now } from '../unit/user-management.spec';
     CreateUserUseCase,
     FindUserUseCase,
     UpdateUserUseCase,
+    PasswordHasherService,
   ],
-  exports: [CreateUserUseCase, FindUserUseCase, UpdateUserUseCase],
+  exports: [],
 })
 export default class AuthenticationTestingModule {}

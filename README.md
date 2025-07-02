@@ -31,6 +31,36 @@
 $ pnpm install
 ```
 
+## Configuration
+
+The application uses environment files located in the `config/envs` directory.
+Three environment configurations are available:
+
+- `development.env` - for development environment
+- `production.env` - for production environment
+- `test.env` - for testing environment
+
+To set up your environment:
+
+1. Copy the `.env.example` file to the appropriate environment file:
+
+```bash
+$ cp .env.example config/envs/development.env
+```
+
+2. Edit the file and adjust the settings as needed:
+
+```
+# Application
+NODE_ENV=development
+PORT=3000
+
+# MongoDB
+MONGODB_URI=mongodb://localhost:27017/benten_dev
+```
+
+The application automatically loads the appropriate configuration based on the NODE_ENV value.
+
 ## Compile and run the project
 
 ```bash

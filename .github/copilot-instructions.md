@@ -1,3 +1,10 @@
+# Context
+
+1.  We are in a TypeScript project using Node.js.
+2.  The project follows a clean architecture pattern.
+3.  The project uses MongoDB for data storage.
+4.  The backend is build with NestJS.
+
 # Coding Guidelines
 
 1. Follow the project's coding style and conventions.
