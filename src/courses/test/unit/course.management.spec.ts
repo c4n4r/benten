@@ -5,6 +5,9 @@ import {
   CreateCourseResponse,
 } from '../../application/types/courses.types';
 import AddCardToCourseUseCase from '../../application/usecase/cards/add-card-to-course.usecase';
+import CreateAudioCardUseCase, {
+  CreateAudioCardCommand,
+} from '../../application/usecase/cards/create-audio-card.usecase';
 import {
   CreateCardCommand,
   CreateCardUseCase,
@@ -135,6 +138,19 @@ describe('Course Management', () => {
         expect(card.content).toEqual('This is a test card content');
         expect(card.createdBy).toEqual('user-1'); // Vérification du createdBy
       });
+
+      it('should be able to create an Audio Card', async () => {
+        const card = await createSimpleAudioCard({
+          title: 'Test Audio Card',
+          content: 'This is a test audio card content',
+          createdBy: 'user-1', // Ajout explicite du createdBy
+        });
+        expect(card).toBeDefined();
+        expect(card.title).toEqual('Test Audio Card');
+        expect(card.content).toEqual('This is a test audio card content');
+        expect(card.createdBy).toEqual('user-1'); // Vérification du createdBy
+      });
+
       it('Should be able to get a Card by ID', async () => {
         const card = await createSimpleCard({
           title: 'Retrieval Card',
@@ -341,4 +357,16 @@ function createSimpleCard(command?: Partial<CreateCardCommand>) {
     createdBy: command?.createdBy || 'default-user-id', // Ajout du champ createdBy
   };
   return testingModule.get(CreateCardUseCase).execute(cmd);
+}
+
+function createSimpleAudioCard(command?: Partial<CreateAudioCardCommand>) {
+  const courseIds = command?.courseIds || ['default-course-id'];
+  const cmd: CreateAudioCardCommand = {
+    title: command?.title || 'Default Audio Card Title',
+    content: command?.content || 'Default Audio Card Content',
+    courseIds,
+    createdBy: command?.createdBy || 'default-user-id',
+    audioUrl: command?.audioUrl || 'https://example.com/audio.mp3',
+  };
+  return testingModule.get(CreateAudioCardUseCase).execute(cmd);
 }

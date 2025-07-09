@@ -4,7 +4,7 @@ import {
   CreateCourseResponse,
   UpdateCourseCommand,
 } from '../../application/types/courses.types';
-import { Course } from '../course.entity';
+import { Course } from '../entity/course.entity';
 
 export default abstract class CourseRepositoryInterface {
   abstract create(course: CreateCourseCommand): Promise<CreateCourseResponse>;

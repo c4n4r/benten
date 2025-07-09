@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import BaseUseCase from '../../../shared/application/usecase/base.usecase';
 import { Identifiant } from '../../../shared/domain/identifiant';
-import { Course } from '../../domain/course.entity';
+import { Course } from '../../domain/entity/course.entity';
 import CourseRepositoryInterface from '../../domain/repository/course.repository';
 
 export interface UpdateCourseCommand {

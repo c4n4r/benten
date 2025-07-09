@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Identifiant } from '../../../shared/domain/identifiant';
 import { CreateCardCommand } from '../../application/usecase/cards/create-card.usecase';
-import { Card } from '../../domain/card.entity';
+import { Card } from '../../domain/entity/card/card.entity';
 import CardRepositoryInterface from '../../domain/repository/card.repository';
 import { CardDocument } from './schemas/card.schema';
 

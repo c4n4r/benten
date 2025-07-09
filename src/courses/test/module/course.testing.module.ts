@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import DateHelperInterface from '../../../shared/application/dates/date.helper';
 import DateHelper from '../../../shared/infrastructure/dates/date.helper';
 import AddCardToCourseUseCase from '../../application/usecase/cards/add-card-to-course.usecase';
+import CreateAudioCardUseCase from '../../application/usecase/cards/create-audio-card.usecase';
 import { CreateCardUseCase } from '../../application/usecase/cards/create-card.usecase';
 import FindCardByIdUseCase from '../../application/usecase/cards/find-card-by-id.usecase';
 import FindCardsByCourseIdUseCase from '../../application/usecase/cards/find-cards-by-course-id.usecase';
@@ -27,6 +28,7 @@ import CourseInMemoryRepository from '../../infrastructure/repository/course.in-
     AddCardToCourseUseCase,
     RemoveCardFromCourseUseCase,
     FindCardByIdUseCase,
+    CreateAudioCardUseCase,
     {
       provide: DateHelperInterface,
       useClass: DateHelper,

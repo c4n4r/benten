@@ -5,7 +5,7 @@ import {
   CreateCourseCommand,
   UpdateCourseCommand,
 } from '../../application/types/courses.types';
-import { Course } from '../../domain/course.entity';
+import { Course } from '../../domain/entity/course.entity';
 import CourseRepositoryInterface from '../../domain/repository/course.repository';
 
 @Injectable()

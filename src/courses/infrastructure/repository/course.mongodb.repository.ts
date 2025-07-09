@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Identifiant } from '../../../shared/domain/identifiant';
 import { CreateCourseCommand } from '../../application/types/courses.types';
-import { Course } from '../../domain/course.entity';
+import { Course } from '../../domain/entity/course.entity';
 import CourseRepositoryInterface from '../../domain/repository/course.repository';
 import { CourseDocument } from './schemas/course.schema';
 

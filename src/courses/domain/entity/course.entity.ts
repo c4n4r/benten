@@ -1,4 +1,4 @@
-import { Identifiant } from '../../shared/domain/identifiant';
+import { Identifiant } from '../../../shared/domain/identifiant';
 
 export interface CourseDTO {
   id: Identifiant;

@@ -1,13 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { Identifiant } from '../../../shared/domain/identifiant';
-import {
-  CreateUserResponse,
-  UpdateUserCommand,
-} from '../../application/types/user-management.types';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreateUserResponse } from '../../application/types/user-management.types';
 import CreateUserUseCase from '../../application/usecase/create-user.usecase';
 import FindUserUseCase from '../../application/usecase/find-user.usecase';
 import UpdateUserUseCase from '../../application/usecase/update-user.usecase';
-import { User } from '../../domain/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('authentication')
@@ -18,7 +13,7 @@ export default class AuthenticationController {
     private readonly updateUserUseCase: UpdateUserUseCase,
   ) {}
 
-  @Post('create')
+  @Post('register')
   async createUser(
     @Body() userCommand: CreateUserDto,
   ): Promise<CreateUserResponse> {
@@ -34,22 +29,14 @@ export default class AuthenticationController {
       nickname: userCommand.nickname,
     });
   }
-  @Get()
-  async findUserById(@Param('id') id: Identifiant): Promise<User | null> {
-    return this.findUserUseCase.execute(id);
-  }
-
-  async updateUser(
-    @Param('id') id: Identifiant,
-    @Body() updateUserCommand: UpdateUserCommand,
-  ): Promise<User> {
-    if (!updateUserCommand) {
-      throw new Error('Update command is required');
+  /*
+  @Post('login')
+  async loginUser(
+    @Body() loginParams: LoginUserDto,
+  ): Promise<LoginUserResponse> {
+    if (!loginParams) {
+      throw new Error('Login parameters are required');
     }
-
-    return this.updateUserUseCase.execute({
-      id,
-      updateUserCommand,
-    });
   }
+  */
 }

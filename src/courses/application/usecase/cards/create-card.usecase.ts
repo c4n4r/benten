@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import BaseUseCase from '../../../../shared/application/usecase/base.usecase';
 import { Identifiant } from '../../../../shared/domain/identifiant';
-import { Card } from '../../../domain/card.entity';
+import { Card } from '../../../domain/entity/card/card.entity';
 import CardRepositoryInterface from '../../../domain/repository/card.repository';
 
 export interface CreateCardCommand {
